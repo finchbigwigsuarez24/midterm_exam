@@ -228,7 +228,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ),
 
-              // 👇 specifications section
+              // specifications section
               Padding
               (
                 padding: const EdgeInsets.all(16.0),
@@ -249,7 +249,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 12),
 
-                    // Material
                     const Text
                     (
                       'Material',
@@ -292,7 +291,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 16),
 
-                    // Origin
                     const Text
                     (
                       'Origin',
@@ -318,7 +316,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 16),
 
-                    // Size guide
                     Row
                     (
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -343,6 +340,270 @@ class _ProductPageState extends State<ProductPage> {
                           ),
                         ),
                       ],
+                    ),
+                  ],
+                ),
+              ),
+
+              // delivery section
+              Padding
+              (
+                padding: const EdgeInsets.all(16.0),
+                child: Column
+                (
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: 
+                  [
+                    const Text
+                    (
+                      'Delivery',
+                      style: TextStyle
+                      (
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    Container
+                    (
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      decoration: BoxDecoration
+                      (
+                        border: Border.all(color: Colors.blue),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row
+                      (
+                        children: 
+                        [
+                          const Text
+                          (
+                            'Standard',
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          const SizedBox(width: 10),
+                          Container
+                          (
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration
+                            (
+                              color: Color(0xFFE8F0FF),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text
+                            (
+                              '5-7 days',
+                              style: TextStyle(fontSize: 13, color: Colors.blue),
+                            ),
+                          ),
+                          const Spacer(),
+                          const Text
+                          (
+                            '\$3,00',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(height: 10),
+
+                    Container
+                    (
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      decoration: BoxDecoration
+                      (
+                        border: Border.all(color: Colors.blue),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row
+                      (
+                        children: 
+                        [
+                          const Text
+                          (
+                            'Express',
+                            style: TextStyle(fontSize: 15),
+                          ),
+                          const SizedBox(width: 10),
+                          Container
+                          (
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                            decoration: BoxDecoration
+                            (
+                              color: Color(0xFFE8F0FF),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: const Text
+                            (
+                              '1-2 days',
+                              style: TextStyle(fontSize: 13, color: Colors.blue),
+                            ),
+                          ),
+                          const Spacer(),
+                          const Text
+                          (
+                            '\$12,00',
+                            style: TextStyle
+                            (
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              // 👇 rating & reviews section
+              Padding
+              (
+                padding: const EdgeInsets.all(16.0),
+                child: Column
+                (
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: 
+                  [
+                    const Text
+                    (
+                      'Rating & Reviews',
+                      style: TextStyle
+                      (
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+
+                    const SizedBox(height: 12),
+
+                    // overall rating row
+                    Row
+                    (
+                      children: 
+                      [
+                        ...List.generate(5, (index) => Icon
+                        (
+                          index < 4 ? Icons.star : Icons.star_border,
+                          color: Colors.amber,
+                          size: 32,
+                        )),
+
+                        const SizedBox(width: 10),
+
+                        Container
+                        (
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                          decoration: BoxDecoration
+                          (
+                            color: Color(0xFFE8E8F0),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Text
+                          (
+                            '4/5',
+                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // reviewer row
+                    Row
+                    (
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: 
+                      [
+                        CircleAvatar
+                        (
+                          radius: 28,
+                          backgroundImage: AssetImage('assets/32b2fed3dd6e97ca36cbcbf5ca57596f7c6547d3.png'),
+                        ),
+
+                        const SizedBox(width: 12),
+
+                        Column
+                        (
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: 
+                          [
+                            const Text
+                            (
+                              'Veronika',
+                              style: TextStyle
+                              (
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+
+                            const SizedBox(height: 4),
+
+                            Row
+                            (
+                              children: List.generate(5, (index) => Icon
+                              (
+                                index < 4 ? Icons.star : Icons.star_border,
+                                color: Colors.amber,
+                                size: 18,
+                              )),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+
+                    const SizedBox(height: 10),
+
+                    const Text
+                    (
+                      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed ...',
+                      style: TextStyle
+                      (
+                        fontSize: 14,
+                        color: Colors.black87,
+                      ),
+                    ),
+
+                    const SizedBox(height: 16),
+
+                    // view all reviews button
+                    SizedBox
+                    (
+                      width: double.infinity,
+                      child: ElevatedButton
+                      (
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom
+                        (
+                          backgroundColor: Colors.blue,
+                          padding: const EdgeInsets.symmetric(vertical: 16),
+                          shape: RoundedRectangleBorder
+                          (
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        child: const Text
+                        (
+                          'View All Reviews',
+                          style: TextStyle
+                          (
+                            color: Colors.white,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
