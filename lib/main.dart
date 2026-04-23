@@ -36,6 +36,16 @@ class ProductPage extends StatefulWidget
 }
 
 class _ProductPageState extends State<ProductPage> {
+
+  // Sample data for Most Popular section
+  final List<Map<String, dynamic>> _popularItems = 
+  [
+    {'favorites': 1780, 'tag': 'New',  'imagePath': 'assets/39a94b6cb66665a43b8e7d98053af3ed69d2469a.png'},
+    {'favorites': 1780, 'tag': 'Sale', 'imagePath': 'assets/32b2fed3dd6e97ca36cbcbf5ca57596f7c6547d3.png'},
+    {'favorites': 1780, 'tag': 'Hot',  'imagePath': 'assets/494aceb1aceba44ebb5e54c2e7dd0e011730861d.png'},
+    {'favorites': 1780, 'tag': 'New',  'imagePath': 'assets/3a39f1d1d23c65e543db966efd9955c99cf0a27a.png'},
+  ];
+
   @override
   Widget build(BuildContext context) 
   {
@@ -465,7 +475,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ),
 
-              // 👇 rating & reviews section
+              // rating & reviews section
               Padding
               (
                 padding: const EdgeInsets.all(16.0),
@@ -486,7 +496,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 12),
 
-                    // overall rating row
                     Row
                     (
                       children: 
@@ -519,7 +528,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 16),
 
-                    // reviewer row
                     Row
                     (
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -578,7 +586,6 @@ class _ProductPageState extends State<ProductPage> {
 
                     const SizedBox(height: 16),
 
-                    // view all reviews button
                     SizedBox
                     (
                       width: double.infinity,
@@ -608,9 +615,176 @@ class _ProductPageState extends State<ProductPage> {
                   ],
                 ),
               ),
+
+              // ✅ Most Popular Section (bottom)
+              Padding
+              (
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row
+                (
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: 
+                  [
+                    const Text
+                    (
+                      'Most Popular',
+                      style: TextStyle
+                      (
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row
+                    (
+                      children: 
+                      [
+                        const Text
+                        (
+                          'See All',
+                          style: TextStyle
+                          (
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        CircleAvatar
+                        (
+                          backgroundColor: Colors.blue,
+                          radius: 18,
+                          child: IconButton
+                          (
+                            iconSize: 16,
+                            icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              SizedBox
+              (
+                height: 220,
+                child: ListView.separated
+                (
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: _popularItems.length,
+                  separatorBuilder: (_, _) => const SizedBox(width: 12),
+                  itemBuilder: (context, index) 
+                  {
+                    final item = _popularItems[index];
+                    return _PopularProductCard
+                    (
+                      imagePath: item['imagePath'] as String,
+                      favorites: item['favorites'] as int,
+                      tag: item['tag'] as String,
+                    );
+                  },
+                ),
+              ),
+
+              const SizedBox(height: 24),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+// Most Popular Product Card Widget
+class _PopularProductCard extends StatelessWidget 
+{
+  final String imagePath;
+  final int favorites;
+  final String tag;
+
+  const _PopularProductCard
+  ({
+    required this.imagePath,
+    required this.favorites,
+    required this.tag,
+  });
+
+  @override
+  Widget build(BuildContext context) 
+  {
+    return SizedBox
+    (
+      width: 155,
+      child: Column
+      (
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: 
+        [
+          ClipRRect
+          (
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset
+            (
+              imagePath,
+              width: 155,
+              height: 170,
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          const SizedBox(height: 6),
+
+          Row
+          (
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: 
+            [
+              Row
+              (
+                children: 
+                [
+                  Text
+                  (
+                    '$favorites',
+                    style: const TextStyle
+                    (
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  const Icon
+                  (
+                    Icons.favorite,
+                    color: Colors.blue,
+                    size: 18,
+                  ),
+                ],
+              ),
+              Container
+              (
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                decoration: BoxDecoration
+                (
+                  color: Color(0xFFF0F0F0),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text
+                (
+                  tag,
+                  style: const TextStyle
+                  (
+                    fontSize: 12,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
