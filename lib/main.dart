@@ -35,9 +35,9 @@ class ProductPage extends StatefulWidget
   State<ProductPage> createState() => _ProductPageState();
 }
 
-class _ProductPageState extends State<ProductPage> {
+class _ProductPageState extends State<ProductPage> 
+{
 
-  // Sample data for Most Popular section
   final List<Map<String, dynamic>> _popularItems = 
   [
     {'favorites': 1780, 'tag': 'New',  'imagePath': 'assets/39a94b6cb66665a43b8e7d98053af3ed69d2469a.png'},
@@ -46,11 +46,117 @@ class _ProductPageState extends State<ProductPage> {
     {'favorites': 1780, 'tag': 'New',  'imagePath': 'assets/3a39f1d1d23c65e543db966efd9955c99cf0a27a.png'},
   ];
 
+  final List<Map<String, dynamic>> _youMightLikeItems =
+  [
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/337a22ae49b350434fc9e50a9abb7351559ff374.png'},
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/3a39f1d1d23c65e543db966efd9955c99cf0a27a.png'},
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/902c2ed6848fbde49066a7244b1f4197b721c175.png'},
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/a83ea946c62c6f134effe41537b18c9db6256a82.png'},
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/3b47e06126ae09cc2e56bc0cfdbbcad80ef5aa67.png'},
+    {'title': 'Lorem ipsum dolor sit amet consectetur', 'price': '\$17.00', 'imagePath': 'assets/cc4114d527454b7282c49edc81b76bb6c1314605.png'},
+  ];
+
   @override
   Widget build(BuildContext context) 
   {
     return Scaffold
     (
+      bottomNavigationBar: Container
+      (
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration
+        (
+          color: Colors.white,
+          boxShadow: 
+          [
+            BoxShadow
+            (
+              color: Colors.black12,
+              blurRadius: 8,
+              offset: Offset(0, -2),
+            ),
+          ],
+        ),
+        child: Row
+        (
+          children: 
+          [
+            Container
+            (
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration
+              (
+                color: Color(0xFFF5F5F5),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: IconButton
+              (
+                icon: const Icon(Icons.favorite_border, size: 22, color: Colors.black87),
+                onPressed: () {},
+              ),
+            ),
+
+            const SizedBox(width: 12),
+
+            Expanded
+            (
+              child: ElevatedButton
+              (
+                onPressed: () {},
+                style: ElevatedButton.styleFrom
+                (
+                  backgroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder
+                  (
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text
+                (
+                  'Add to cart',
+                  style: TextStyle
+                  (
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+
+            const SizedBox(width: 12),
+
+            Expanded
+            (
+              child: ElevatedButton
+              (
+                onPressed: () {},
+                style: ElevatedButton.styleFrom
+                (
+                  backgroundColor: Colors.blue,
+                  padding: const EdgeInsets.symmetric(vertical: 14),
+                  shape: RoundedRectangleBorder
+                  (
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+                child: const Text
+                (
+                  'Buy now',
+                  style: TextStyle
+                  (
+                    color: Colors.white,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea
       (
         child: SingleChildScrollView
@@ -157,7 +263,7 @@ class _ProductPageState extends State<ProductPage> {
                           decoration: BoxDecoration
                           (
                             border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Text('Pink', style: TextStyle(fontSize: 13)),
                         ),
@@ -168,7 +274,7 @@ class _ProductPageState extends State<ProductPage> {
                           decoration: BoxDecoration
                           (
                             border: Border.all(color: Colors.grey),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Text('M', style: TextStyle(fontSize: 13)),
                         ),
@@ -515,7 +621,7 @@ class _ProductPageState extends State<ProductPage> {
                           decoration: BoxDecoration
                           (
                             color: Color(0xFFE8E8F0),
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           child: const Text
                           (
@@ -598,7 +704,7 @@ class _ProductPageState extends State<ProductPage> {
                           padding: const EdgeInsets.symmetric(vertical: 16),
                           shape: RoundedRectangleBorder
                           (
-                            borderRadius: BorderRadius.circular(30),
+                            borderRadius: BorderRadius.circular(12),
                           ),
                         ),
                         child: const Text
@@ -616,7 +722,7 @@ class _ProductPageState extends State<ProductPage> {
                 ),
               ),
 
-              // ✅ Most Popular Section (bottom)
+              // Most Popular Section
               Padding
               (
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -684,6 +790,87 @@ class _ProductPageState extends State<ProductPage> {
                       imagePath: item['imagePath'] as String,
                       favorites: item['favorites'] as int,
                       tag: item['tag'] as String,
+                    );
+                  },
+                ),
+              ),
+
+              const SizedBox(height: 24),
+
+              // You Might Like Section
+              Padding
+              (
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row
+                (
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: 
+                  [
+                    const Text
+                    (
+                      'You Might Like',
+                      style: TextStyle
+                      (
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Row
+                    (
+                      children: 
+                      [
+                        const Text
+                        (
+                          'See All',
+                          style: TextStyle
+                          (
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        CircleAvatar
+                        (
+                          backgroundColor: Colors.blue,
+                          radius: 18,
+                          child: IconButton
+                          (
+                            iconSize: 16,
+                            icon: const Icon(Icons.arrow_forward, color: Colors.white),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
+              Padding
+              (
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GridView.builder
+                (
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: _youMightLikeItems.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount
+                  (
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 16,
+                    crossAxisSpacing: 12,
+                    childAspectRatio: 0.72,
+                  ),
+                  itemBuilder: (context, index) 
+                  {
+                    final item = _youMightLikeItems[index];
+                    return _YouMightLikeCard
+                    (
+                      imagePath: item['imagePath'] as String,
+                      title: item['title'] as String,
+                      price: item['price'] as String,
                     );
                   },
                 ),
@@ -770,7 +957,7 @@ class _PopularProductCard extends StatelessWidget
                 decoration: BoxDecoration
                 (
                   color: Color(0xFFF0F0F0),
-                  borderRadius: BorderRadius.circular(20),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text
                 (
@@ -786,6 +973,72 @@ class _PopularProductCard extends StatelessWidget
           ),
         ],
       ),
+    );
+  }
+}
+
+// You Might Like Card Widget
+class _YouMightLikeCard extends StatelessWidget 
+{
+  final String imagePath;
+  final String title;
+  final String price;
+
+  const _YouMightLikeCard
+  ({
+    required this.imagePath,
+    required this.title,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) 
+  {
+    return Column
+    (
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: 
+      [
+        Expanded
+        (
+          child: ClipRRect
+          (
+            borderRadius: BorderRadius.circular(12),
+            child: Image.asset
+            (
+              imagePath,
+              width: double.infinity,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+
+        const SizedBox(height: 8),
+
+        Text
+        (
+          title,
+          style: const TextStyle
+          (
+            fontSize: 13,
+            color: Colors.black87,
+          ),
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+        ),
+
+        const SizedBox(height: 4),
+
+        Text
+        (
+          price,
+          style: const TextStyle
+          (
+            fontSize: 15,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ],
     );
   }
 }
